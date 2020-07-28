@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: mawinklertroopers 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mawinklertroopers 
+    spec:
+      containers:
+        - name: mawinklertroopers 
+          image: troopersregistry.azurecr.io/mawinklertroopers
+          ports:
+          - containerPort: 5000
