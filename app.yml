@@ -39,9 +39,9 @@ spec:
     spec:
       containers:
       - name: troopers
-        image: $K8S_REGISTRY/troopers:latest
+        image: mawinkler/troopers:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
-      imagePullSecrets:
-      - name: $KUBERNETES_SECRET_NAME
+      # imagePullSecrets:
+      # - name: $KUBERNETES_SECRET_NAME
