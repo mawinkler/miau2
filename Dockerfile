@@ -1,17 +1,15 @@
-# base image
-FROM alpine:3.9
+# FROM python:3.12-slim-bullseye
+FROM python:3.12-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
+
 # Copy files required for the app to run, see .dockerignore
-COPY . /usr/src/app
+COPY . /app
 
-# Install python and pip
-RUN apk add --update --no-cache python3 && \
-    pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir -r /usr/src/app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Tell the port number the container should expose
 EXPOSE 5000
 
 # Run the application
-CMD ["python3", "/usr/src/app/app.py"]
+CMD ["python3", "/app/app.py"]
