@@ -139,7 +139,7 @@ jobs:
       - name: Summarize the Docker digest and tags
         run: |
           echo 'Digest: ${{ steps.build.outputs.digest }}'
-          echo 'Tags: ${{ steps.meta.outputs.imageid }}'
+          echo 'Tags: ${{ steps.meta.outputs.tags }}'
 
       # Rescan in the registry to support admission control
       - name: Registry Scan
@@ -148,4 +148,8 @@ jobs:
             -V \
             "$(if [ "$MALWARE_SCAN" = true ]; then echo "-M"; fi)" \
             "$(if [ "$SECRETS_SCAN" = true ]; then echo "-S"; fi)" \
-            -r "$REGION" -p linux/amd64 registry:${{ steps.meta.outputs.tags }} || true
+            -r "$REGION" -p linux/amd64 registry:${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build.outputs.digest }} || true
+
+      # -r "$REGION" -p linux/amd64 registry:${{ steps.meta.outputs.tags }} || true
+
+
