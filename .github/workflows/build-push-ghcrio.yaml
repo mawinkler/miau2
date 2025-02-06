@@ -4,7 +4,7 @@ name: ci-ghcrio
 on:
   push:
     branches:
-      - "main"
+      - "master"
     tags: [ v* ]
 
 env:
