@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: troopers
-        image: ghcr.io/mawinkler/troopers
+        image: ghcr.io/mawinkler/troopers:master
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
